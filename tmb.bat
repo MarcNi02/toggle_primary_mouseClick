@@ -21,7 +21,7 @@ if "%swap%"=="1" (
 echo new swap: [%new_swap%]
 
 
-:: Critical Fix: Pass the value correctly to PowerShell
+
 powershell -Command "$NewVal = %new_swap%; Add-Type -Name Win32 -Namespace UI -MemberDefinition '[DllImport(\"user32.dll\")] public static extern bool SystemParametersInfo(uint uiAction, uint uiParam, IntPtr pvParam, uint fWinIni);'; [UI.Win32]::SystemParametersInfo(0x0021, $NewVal, [IntPtr]::Zero, 1)"
 
 :: Verify
